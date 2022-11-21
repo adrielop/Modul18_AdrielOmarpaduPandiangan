@@ -39,9 +39,9 @@ const login = async (req, res, next) => {
   ]);
 
   const user = hash.rows;
- 
 
-  bcrypt.compare(password, user[i].password, function (err, result) {
+
+  bcrypt.compare(password, user[0].password, function (err, result) {
     if (err) {
       // handle error
       console.log(err.message);
