@@ -36,7 +36,7 @@ const Register = () => {
         email: data.get("email"),
         password: data.get("password"),
       });
-      navigate("../profile");
+      navigate("../login");
     } catch (err) {
       console.log(err);
       alert("Failed!");

@@ -6,6 +6,7 @@ const Auth = {
   verifyToken(req, res, next) {
     //const token = req.cookies.jwt;
     const {token} = req.body;
+    console.log(token)
 
 
     if (token) {

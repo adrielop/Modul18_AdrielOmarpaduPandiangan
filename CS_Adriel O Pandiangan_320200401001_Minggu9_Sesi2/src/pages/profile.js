@@ -77,17 +77,27 @@ const Profile = () => {
   const handleLogout = async () => {
     // 1. Hapus localStorage
     localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("id");
+    //localStorage.removeItem("token")
+    
 
     // 2. Hit endpoint logout dengan body jwt yang didapat dari localstorage
     //   dan setelah berhasil, beri alert sukses
+    // await axios
+    //   .post("http://localhost:3000/logout", {
+    //     jwt: localStorage.getItem("token"),
+    //   },console.log("sukses"))
+    //   .then(function(response) {
+    //     alert("Logout Success");
+    //   });
     await axios
-      .post("http://localhost:5000/logout", {
-        jwt: localStorage.getItem("token"),
+      .post("http://localhost:3000/logout", {
+        token: localStorage.getItem("token")
       })
-      .then((res) => {
+      .then(function (res) {
         alert("Logout Success");
-      });
-
+      })
     // 3. Redirect ke halaman login, clue : window.location.href = "/"
     window.location.href = "/login";
   };

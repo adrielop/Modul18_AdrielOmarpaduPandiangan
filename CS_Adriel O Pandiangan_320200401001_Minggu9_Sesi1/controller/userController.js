@@ -38,10 +38,11 @@ const login = async (req, res, next) => {
     email,
   ]);
 
-  const user = hash.rows;
+  const user = hash.rows[0];
+  console.log(user)
 
 
-  bcrypt.compare(password, user[0].password, function (err, result) {
+  bcrypt.compare(password, user.password, function (err, result) {
     if (err) {
       // handle error
       console.log(err.message);
@@ -51,10 +52,10 @@ const login = async (req, res, next) => {
       //10. Generate token menggunakan jwt sign
       const token = jwt.sign(
         {
-          id: user[0].id,
-          username: user[0].username,
-          email: user[0].email,
-          password: user[0].password,
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          password: user.password,
         },
         process.env.SECRET
       );
@@ -63,9 +64,9 @@ const login = async (req, res, next) => {
       //11. kembalikan nilai id, email, dan username
       res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
       return res.status(200).send({
-        id: user[0].id,
-        username: user[0].username,
-        email: user[0].email,
+        id: user.id,
+        username: user.username,
+        email: user.email,
         // password: user[0].password,
         token: token,
       });
@@ -77,6 +78,8 @@ const login = async (req, res, next) => {
 };
 
 const logout = async (req, res, next) => {
+  const { token } = req.body;
+  
   try {
     // 14. code untuk menghilangkan token dari cookies dan mengembalikan pesan "sudah keluar dari aplikasi"
     return res.clearCookie("jwt").send("Logout Sukses!");
