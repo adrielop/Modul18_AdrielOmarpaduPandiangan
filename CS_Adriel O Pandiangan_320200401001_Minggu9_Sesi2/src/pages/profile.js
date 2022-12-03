@@ -46,7 +46,7 @@ const Profile = () => {
     // 2. buat fungsi verifikasi token yang sama seperti di halaman home
     const verifikasi = async () => {
       try {
-        const response = await axios.post(`${process.env.react_backend_url}/verify`, {
+        const response = await axios.post(`${process.env.react_app_backend_url}/verify`, {
           token: localStorage.getItem("token"),
         });
         console.log(localStorage.getItem("token"));
@@ -92,7 +92,7 @@ const Profile = () => {
     //     alert("Logout Success");
     //   });
     await axios
-      .post(`${process.env.react_backend_url}/logout`, {
+      .post(`${process.env.react_app_backend_url}/logout`, {
         token: localStorage.getItem("token")
       })
       .then(function (res) {

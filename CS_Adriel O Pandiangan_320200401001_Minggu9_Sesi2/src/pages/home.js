@@ -48,7 +48,7 @@ const Home = () => {
     // set isLogin menjadi true. bila tidak, redirect ke halaman login
     const verify = async () => {
       try {
-        const response = await axios.post(`${process.env.react_backend_url}/verify`, {
+        const response = await axios.post(`${process.env.react_app_backend_url}/verify`, {
           token: localStorage.getItem("token"),
         });
         if (response.status == 200) {
