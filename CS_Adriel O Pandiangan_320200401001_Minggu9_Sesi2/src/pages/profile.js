@@ -46,7 +46,7 @@ const Profile = () => {
     // 2. buat fungsi verifikasi token yang sama seperti di halaman home
     const verifikasi = async () => {
       try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/verify`, {
+        const response = await axios.post(`https://modul17adrielomarpadupandiangan-production.up.railway.app/verify`, {
           token: localStorage.getItem("token"),
         });
         console.log(localStorage.getItem("token"));
@@ -92,7 +92,7 @@ const Profile = () => {
     //     alert("Logout Success");
     //   });
     await axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/logout`, {
+      .post(`https://modul17adrielomarpadupandiangan-production.up.railway.app/logout`, {
         token: localStorage.getItem("token")
       })
       .then(function (res) {
