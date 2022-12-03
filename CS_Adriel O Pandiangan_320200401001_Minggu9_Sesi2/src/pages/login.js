@@ -32,7 +32,7 @@ const Login = () => {
     // jika berhasil, set localStorage 'user' dan 'token' serta redirect ke halaman profile
     // jika gagal, tampilkan alert 'Login Gagal'
     await axios
-      .post("http://localhost:3000/login", {
+       .post(`${process.env.react_backend_url}/login`, {
         email: data.get("email"),
         password: data.get("password"),
       })

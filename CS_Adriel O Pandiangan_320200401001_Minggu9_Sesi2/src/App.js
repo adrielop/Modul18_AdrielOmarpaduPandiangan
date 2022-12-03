@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { Home, Login, Profile, Register, NotFound } from "./pages";
 
+
 function App() {
   return (
     <div>
