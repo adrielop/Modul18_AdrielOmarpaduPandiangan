@@ -32,7 +32,7 @@ const Login = () => {
     // jika berhasil, set localStorage 'user' dan 'token' serta redirect ke halaman profile
     // jika gagal, tampilkan alert 'Login Gagal'
     await axios
-       .post(`https://modul17adrielomarpadupandiangan-production.up.railway.app/login`, {
+       .post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
         email: data.get("email"),
         password: data.get("password"),
       })
